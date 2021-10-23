@@ -165,6 +165,7 @@ public class JobManager extends RunTime {
                 if (operationType.equals(SqlType.INSERT)) {
                     long start = System.currentTimeMillis();
                     if (!FlinkInterceptor.build(stEnvironment, sqlText)) {
+                        // TODO 非set语句 并且非自定义的AggTable语句才执行这里
                         TableResult tableResult = executor.executeSql(sqlText);
                         JobID jobID = tableResult.getJobClient().get().getJobID();
                         long finish = System.currentTimeMillis();
@@ -180,6 +181,7 @@ public class JobManager extends RunTime {
 
                 } else {
                     if (!FlinkInterceptor.build(stEnvironment, sqlText)) {
+                        // TODO 非set语句 并且非自定义的AggTable语句才执行这里
                         executor.executeSql(sqlText);
                     }
                 }
@@ -219,6 +221,7 @@ public class JobManager extends RunTime {
                 currentIndex++;
                 SqlType operationType = Operations.getOperationType(item);
                 if (!FlinkInterceptor.build(executor.getCustomTableEnvironmentImpl(), item)) {
+                    // TODO 非set语句 并且非自定义的AggTable语句才执行这里
                     TableResult tableResult = executor.executeSql(item);
                     if (tableResult.getJobClient().isPresent()) {
                         job.setJobId(tableResult.getJobClient().get().getJobID().toHexString());

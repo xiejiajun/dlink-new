@@ -41,10 +41,12 @@ public class SetOperation extends AbstractOperation implements Operation {
 
     @Override
     public void build(CustomTableEnvironmentImpl stEnvironment) {
+        // TODO 这里获取到set的key value列表
         Map<String,List<String>> map = SingleSqlParserFactory.generateParser(statement);
         if(Asserts.isNotNullMap(map)&&map.size()==2) {
             Map<String, String> confMap = new HashMap<>();
             confMap.put(StringUtils.join(map.get("SET"), "."), StringUtils.join(map.get("="), ","));
+            // TODO 将set语句设置的配置传递给TableEnv
             stEnvironment.getConfig().addConfiguration(Configuration.fromMap(confMap));
         }
     }

@@ -48,6 +48,7 @@ public class Explainer {
             SqlExplainResult record = new SqlExplainResult();
             try {
                 if (!FlinkInterceptor.build(executor.getCustomTableEnvironmentImpl(), sqls[i])) {
+                    // TODO 非set语句 并且非自定义的AggTable语句才执行这里
                     record = executor.explainSqlRecord(sqls[i]);
                     if (Asserts.isEquals(FlinkSQLConstant.DDL,record.getType())) {
                         executor.executeSql(sqls[i]);

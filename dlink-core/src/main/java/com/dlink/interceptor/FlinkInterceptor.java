@@ -27,6 +27,12 @@ import java.util.Map;
  */
 public class FlinkInterceptor {
 
+    /**
+     * TODO 判断是否是set语句或者自定义的AGGTable语句，这个方法命名着实有点让人蓝瘦
+     * @param stEnvironment
+     * @param statemnet
+     * @return
+     */
     public static boolean build( CustomTableEnvironmentImpl stEnvironment,String statemnet){
         initFunctions(stEnvironment,statemnet);
         /*if(initConfiguration(stEnvironment,statemnet)){
