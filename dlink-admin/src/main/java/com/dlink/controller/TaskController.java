@@ -72,6 +72,7 @@ public class TaskController {
     }
 
     /**
+     * TODO 老架构：链接远程启动好的Flink Cluster进行sql提交的入口
      * 批量执行
      */
     @PostMapping(value = "/submit")
@@ -107,6 +108,7 @@ public class TaskController {
     }
 
     /**
+     * TODO per-job模式
      * 提交作业
      */
     @GetMapping(value = "/submitApplication")

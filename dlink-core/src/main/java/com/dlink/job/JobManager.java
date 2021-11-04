@@ -243,7 +243,9 @@ public class JobManager extends RunTime {
                     }
                 }
             }
+            // TODO 将SQL解析成JobGraph
             JobGraph jobGraph = executor.getJobGraphFromInserts(inserts);
+            // TODO YarnPerJobGateway.submitJobGraph: YarnPerJobGateway对标Flink CLI里面的JobGraph提交客户端
             GatewayResult gatewayResult = Gateway.build(gatewayConfig).submitJobGraph(jobGraph);
             long finish = System.currentTimeMillis();
             long timeElapsed = finish - start;

@@ -141,6 +141,7 @@ public class StudioController {
         return Result.succeed(studioService.cancel(clusterId,jobId),"停止成功");
     }
     /**
+     * TODO 按yarn-application模式提交
      * 提交jar
      */
     @PostMapping("/submitJar")

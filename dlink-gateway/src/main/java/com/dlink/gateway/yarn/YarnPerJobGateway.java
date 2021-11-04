@@ -34,6 +34,11 @@ public class YarnPerJobGateway extends YarnGateway {
         return GatewayType.YARN_PER_JOB;
     }
 
+    /**
+     * TODO 实现 flink cli yarn-perjob模式的后半段行为：启动AM并提交JobGraph
+     * @param jobGraph
+     * @return
+     */
     @Override
     public GatewayResult submitJobGraph(JobGraph jobGraph) {
         if(Asserts.isNull(yarnClient)){

@@ -44,6 +44,10 @@ public class YarnApplicationGateway extends YarnGateway {
         throw new GatewayException("Couldn't deploy Yarn Application Cluster with job graph.");
     }
 
+    /**
+     * Todo yarn-application模式启动AM(JM)并将jar提交到上面解析执行的逻辑
+     * @return
+     */
     @Override
     public GatewayResult submitJar() {
         if(Asserts.isNull(yarnClient)){
